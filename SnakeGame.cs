@@ -12,7 +12,18 @@ class SnakeGame
     static Direction dir;
 
     enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN }
-
+    
+    static void Setup()
+    {
+        gameOver = false;
+        dir = Direction.STOP;
+        x = width / 2;
+        y = height / 2;
+        Random rand = new Random();
+        fruitX = rand.Next(width);
+        fruitY = rand.Next(height);
+        score = 0;
+    }
     
     static void Draw()
     {
