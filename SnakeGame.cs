@@ -70,5 +70,30 @@ class SnakeGame
         Console.WriteLine("Score: " + score);
     }
 
+    static void Input()
+    {
+        if (Console.KeyAvailable)
+        {
+            ConsoleKey key = Console.ReadKey(true).Key;
+            switch (key)
+            {
+                case ConsoleKey.A:
+                    dir = Direction.LEFT;
+                    break;
+                case ConsoleKey.D:
+                    dir = Direction.RIGHT;
+                    break;
+                case ConsoleKey.W:
+                    dir = Direction.UP;
+                    break;
+                case ConsoleKey.S:
+                    dir = Direction.DOWN;
+                    break;
+                case ConsoleKey.X:
+                    gameOver = true;
+                    break;
+            }
+        }
+    }
 
 }
