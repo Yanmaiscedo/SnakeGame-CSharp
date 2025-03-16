@@ -96,4 +96,47 @@ class SnakeGame
         }
     }
 
+    static void Logic()
+    {
+        int prevX = tailX[0], prevY = tailY[0], prev2X, prev2Y;
+        tailX[0] = x;
+        tailY[0] = y;
+
+        for (int i = 1; i < nTail; i++)
+        {
+            prev2X = tailX[i];
+            prev2Y = tailY[i];
+            tailX[i] = prevX;
+            tailY[i] = prevY;
+            prevX = prev2X;
+            prevY = prev2Y;
+        }
+
+        switch (dir)
+        {
+            case Direction.LEFT: x--; break;
+            case Direction.RIGHT: x++; break;
+            case Direction.UP: y--; break;
+            case Direction.DOWN: y++; break;
+        }
+
+        if (x >= width) x = 0; else if (x < 0) x = width - 1;
+        if (y >= height) y = 0; else if (y < 0) y = height - 1;
+
+        for (int i = 0; i < nTail; i++)
+        {
+            if (tailX[i] == x && tailY[i] == y)
+                gameOver = true;
+        }
+
+        if (x == fruitX && y == fruitY)
+        {
+            score += 10;
+            Random rand = new Random();
+            fruitX = rand.Next(width);
+            fruitY = rand.Next(height);
+            nTail++;
+        }
+    }
+
 }
