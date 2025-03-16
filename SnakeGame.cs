@@ -139,4 +139,15 @@ class SnakeGame
         }
     }
 
+    static void Main()
+    {
+        Setup();
+        while (!gameOver)
+        {
+            Draw();
+            Input();
+            Logic();
+            Thread.Sleep(40);
+        }
+    }
 }
