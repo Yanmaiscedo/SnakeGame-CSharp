@@ -13,4 +13,51 @@ class SnakeGame
 
     enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN }
 
+    
+    static void Draw()
+    {
+        Console.Clear();
+        Console.WriteLine("!!!!slither.io!!!!");
+
+        for (int i = 0; i < width + 2; i++)
+            Console.Write("#");
+        Console.WriteLine();
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                if (j == 0)
+                    Console.Write("#");
+                if (i == y && j == x)
+                    Console.Write("Q");
+                else if (i == fruitY && j == fruitX)
+                    Console.Write("$");
+                else
+                {
+                    bool print = false;
+                    for (int k = 0; k < nTail; k++)
+                    {
+                        if (tailX[k] == j && tailY[k] == i)
+                        {
+                            Console.Write("o");
+                            print = true;
+                        }
+                    }
+                    if (!print)
+                        Console.Write(" ");
+                }
+                if (j == width - 1)
+                    Console.Write("#");
+            }
+            Console.WriteLine();
+        }
+
+        for (int i = 0; i < width + 2; i++)
+            Console.Write("#");
+        Console.WriteLine();
+        Console.WriteLine("Score: " + score);
+    }
+
+
 }
